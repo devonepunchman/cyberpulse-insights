@@ -8,50 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        /* Debug styles to ensure header displays */
-        .navbar { background: #0a0a0a !important; }
-        .hero { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%) !important; }
-        .container { max-width: 1200px !important; margin: 0 auto !important; padding: 0 20px !important; }
-    </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
-        .post-header { margin-bottom: var(--space-xl); }
-        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); line-height: 1.2; }
-        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
-        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
-        .post-body { line-height: 1.8; }
-        
-        /* Storytelling Sections */
-        .story-section { margin-bottom: var(--space-xl); }
-        .story-title { font-size: 1.8rem; color: var(--primary); margin-bottom: var(--space-md); border-left: 4px solid var(--primary); padding-left: var(--space-md); }
-        .story-lead { font-size: 1.2rem; color: var(--light); font-weight: 500; margin-bottom: var(--space-md); line-height: 1.6; }
-        
-        /* Technical Deep Dive */
-        .tech-section { background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: var(--radius-lg); padding: var(--space-lg); margin: var(--space-xl) 0; }
-        .tech-title { color: var(--primary); font-size: 1.5rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm); }
-        .tech-title i { color: var(--primary); }
-        .code-block { background: #1a1b26; border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
-        .code-block pre { margin: 0; color: #c0caf5; }
-        
-        /* Impact Cards */
-        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
-        .impact-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .impact-card.critical { border-left: 4px solid var(--danger); }
-        .impact-card.warning { border-left: 4px solid var(--warning); }
-        .impact-card.info { border-left: 4px solid var(--primary); }
-        .impact-card-title { color: var(--light); font-weight: 600; margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-sm); }
-        
-        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
-        .back-button:hover { color: var(--primary-dark); }
-        
-        @media (max-width: 768px) { 
-            .post-title { font-size: 2rem; } 
-            .post-meta { flex-direction: column; gap: var(--space-sm); } 
-            .impact-grid { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
