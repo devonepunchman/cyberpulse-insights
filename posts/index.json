@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "date": "2026-02-25",
+      "title": "Container Security Gaps in Cloud-Native Deployments",
+      "category": "Cloud",
+      "excerpt": "Misconfigurations in cloud infrastructure lead to data exposure. Best practices for securing cloud deployments and monitoring for anomalies.",
+      "tags": [
+        "GCP",
+        "Threat Intelligence",
+        "Microsoft 365",
+        "Azure",
+        "Security",
+        "AWS",
+        "Cybersecurity",
+        "IAM"
+      ],
+      "read_time": 10,
+      "author": "Dr. Sarah Johnson, Principal Security Researcher"
+    },
+    {
+      "id": 1,
+      "date": "2026-02-25",
+      "title": "IAM Misconfigurations in Azure Cause Breaches",
+      "category": "Cloud",
+      "excerpt": "Misconfigurations in cloud infrastructure lead to data exposure. Best practices for securing cloud deployments and monitoring for anomalies.",
+      "tags": [
+        "IAM",
+        "Threat Intelligence",
+        "Security",
+        "Cybersecurity",
+        "Azure",
+        "Configuration",
+        "GCP",
+        "AWS"
+      ],
+      "read_time": 10,
+      "author": "Marcus Rodriguez, Cloud Security Architect"
+    }
+  ]
+}
