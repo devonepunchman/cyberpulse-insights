@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Okta Breach: When Your Identity Provider Gets Hacked - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
+        .post-header { margin-bottom: var(--space-xl); }
+        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); line-height: 1.2; }
+        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
+        .post-body { line-height: 1.8; }
+        
+        /* Storytelling Sections */
+        .story-section { margin-bottom: var(--space-xl); }
+        .story-title { font-size: 1.8rem; color: var(--primary); margin-bottom: var(--space-md); border-left: 4px solid var(--primary); padding-left: var(--space-md); }
+        .story-lead { font-size: 1.2rem; color: var(--light); font-weight: 500; margin-bottom: var(--space-md); line-height: 1.6; }
+        
+        /* Technical Deep Dive */
+        .tech-section { background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: var(--radius-lg); padding: var(--space-lg); margin: var(--space-xl) 0; }
+        .tech-title { color: var(--primary); font-size: 1.5rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm); }
+        .tech-title i { color: var(--primary); }
+        .code-block { background: #1a1b26; border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .code-block pre { margin: 0; color: #c0caf5; }
+        
+        /* Impact Cards */
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+        .impact-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .impact-card.critical { border-left: 4px solid var(--danger); }
+        .impact-card.warning { border-left: 4px solid var(--warning); }
+        .impact-card.info { border-left: 4px solid var(--primary); }
+        .impact-card-title { color: var(--light); font-weight: 600; margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-sm); }
+        
+        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
+        .back-button:hover { color: var(--primary-dark); }
+        
+        @media (max-width: 768px) { 
+            .post-title { font-size: 2rem; } 
+            .post-meta { flex-direction: column; gap: var(--space-sm); } 
+            .impact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-menu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/#threats" class="nav-link"><i class="fas fa-fire"></i> Threats</a>
+                <a href="/#training" class="nav-link"><i class="fas fa-graduation-cap"></i> Training</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to All Posts</a>
+            
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"><i class="far fa-calendar"></i> February 25, 2026</span>
+                    <span class="post-category critical">Identity Security Story</span>
+                    <span class="read-time"><i class="far fa-clock"></i> 14 min read</span>
+                </div>
+                <h1 class="post-title">The Okta Breach: When Your Identity Provider Gets Hacked</h1>
+                <div class="post-author"><i class="fas fa-user"></i> Marcus Rodriguez, IAM Security Specialist</div>
+                <div class="post-tags">
+                    <span class="tag">Okta</span><span class="tag">Identity</span><span class="tag">SSO</span>
+                    <span class="tag">Support System</span><span class="tag">HAR Files</span><span class="tag">MFA</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <!-- Storytelling Section -->
+                <div class="story-section">
+                    <div class="story-title">The Support Ticket That Broke Everything</div>
+                    <p class="story-lead">October 2023: A routine support ticket at Okta turned into a nightmare for 134 enterprise customers including 1Password, Cloudflare, and BeyondTrust. Attackers had access to Okta's support system for three weeks.</p>
+                    
+                    <p>It started with stolen credentials from a support engineer. But this wasn't a typical phishing attack. The attackers knew exactly what they were looking for: HAR (HTTP Archive) files containing session tokens, cookies, and authentication data.</p>
+                    
+                    <p>For three weeks, they quietly downloaded these files, gaining access to customer support cases. Each HAR file was a treasure trove of authentication data that could be replayed to access customer systems.</p>
+                </div>
+                
+                <!-- Technical Deep Dive -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-code"></i> Technical Deep Dive: The HAR File Goldmine</div>
+                    
+                    <h3>What's in a HAR File?</h3>
+                    <p>HAR files record all browser activity during a support session. For identity providers like Okta, they contain authentication tokens that can be replayed.</p>
+                    
+                    <div class="code-block">
+                        <pre>{
+  "log": {
+    "entries": [
+      {
+        "request": {
+          "url": "https://company.okta.com/api/v1/users",
+          "method": "GET",
+          "headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            },
+            {
+              "name": "Cookie",
+              "value": "sid=abc123; DT=xyz789"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "content": {
+            "text": "{\"users\":[{\"id\":\"123\",\"email\":\"admin@company.com\"}]}"
+          }
+        }
+      }
+    ]
+  }
+}</pre>
+                    </div>
+                    
+                    <h3>The Attack Chain:</h3>
+                    <ol>
+                        <li><strong>Credential Theft:</strong> Support engineer credentials stolen (likely phishing)</li>
+                        <li><strong>Support System Access:</strong> Login to Okta's support portal</li>
+                        <li><strong>HAR File Harvesting:</strong> Download customer support session files</li>
+                        <li><strong>Token Extraction:</strong> Parse HAR files for authentication tokens</li>
+                        <li><strong>Session Replay:</strong> Use tokens to access customer Okta instances</li>
+                        <li><strong>Lateral Movement:</strong> Access customer applications via SSO</li>
+                    </ol>
+                    
+                    <h3>Why This Was So Devastating:</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-key"></i> Live Session Tokens</div>
+                            <p>HAR files contained active session tokens, not just passwords</p>
+                        </div>
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-cookie"></i> Persistent Cookies</div>
+                            <p>Session cookies allowed continued access without re-authentication</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-user-shield"></i> Bypassed MFA</div>
+                            <p>Tokens represented already-authenticated sessions, bypassing MFA</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-network-wired"></i> SSO Chain Reaction</div>
+                            <p>Compromise one identity provider, access all connected applications</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Impact Analysis -->
+                <div class="story-section">
+                    <div class="story-title">The Ripple Effect: 134 Companies Affected</div>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-building"></i> High-Profile Victims</div>
+                            <p><strong>1Password:</strong> Password manager company<br>
+                            <strong>Cloudflare:</strong> Internet infrastructure giant<br>
+                            <strong>BeyondTrust:</strong> Privileged access management vendor<br>
+                            <strong>134 total</strong> enterprise customers affected</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-clock"></i> Timeline of Discovery</div>
+                            <p><strong>Sept 28:</strong> Initial compromise<br>
+                            <strong>Oct 17:</strong> Okta detects suspicious activity<br>
+                            <strong>Oct 20:</strong> Public disclosure<br>
+                            <strong>3 weeks:</strong> Total access duration</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-shield-alt"></i> Customer Response</div>
+                            <p><strong>1Password:</strong> Rotated all credentials<br>
+                            <strong>Cloudflare:</strong> Enhanced monitoring<br>
+                            <strong>BeyondTrust:</strong> Detected and blocked attack<br>
+                            Industry-wide security reviews</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-chart-line"></i> Market Impact</div>
+                            <p><strong>Okta stock:</strong> 11% drop after disclosure<br>
+                            <strong>Customer trust:</strong> Significant erosion<br>
+                            <strong>Competitor gain:</strong> Microsoft, Ping Identity saw increased interest</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Defense Strategies -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-shield-alt"></i> Defense Strategies: Securing Identity Providers</div>
+                    
+                    <h3>1. Support System Security</h3>
+                    <div class="code-block">
+                        <pre># Support system security controls
+1. **Strict Access Controls**
+   - Role-based access for support engineers
+   - Just-in-time privilege elevation
+   - Session recording with alerting
+
+2. **HAR File Protection**
+   - Automatically redact sensitive tokens
+   - Short-lived file retention (24-48 hours)
+   - Encryption at rest and in transit
+
+3. **Monitoring & Alerting**
+   - Unusual download patterns
+   - Multiple customer file access
+   - Geographic anomalies
+
+# Example monitoring rule
+rule SupportSystemAnomaly {
+  meta:
+    description = "Detect unusual HAR file downloads"
+    severity = "HIGH"
+  
+  condition:
+    event.action == "download" and
+    event.object == "har_file" and
+    count() > 5 within 1h and
+    event.user.role == "support_engineer"
+}</pre>
+                    </div>
+                    
+                    <h3>2. Customer-Side Protections</h3>
+                    <p>Even if your identity provider is compromised, you can limit the damage.</p>
+                    
+                    <div class="code-block">
+                        <pre># Okta security best practices
+1. **Session Management**
+   - Short session timeouts (4-8 hours)
+   - Inactivity timeouts (15-30 minutes)
+   - Re-authentication for sensitive actions
+
+2. **Network Restrictions**
+   - IP allowlisting for admin access
+   - Country-based blocking
+   - VPN/VPC endpoint requirements
+
+3. **Monitoring & Detection**
+   - Alert on unusual IP addresses
+   - Detect token reuse/replay
+   - Monitor for support system access
+
+# Okta API call with security headers
+curl -X GET \
+  -H "Authorization: SSWS ${API_TOKEN}" \
+  -H "X-Forwarded-For: ${CLIENT_IP}" \
+  -H "User-Agent: Corporate-App/1.0" \
+  "https://${ORG}.okta.com/api/v1/users?limit=1"</pre>
+                    </div>
+                    
+                    <h3>3. Zero Trust for Support Access</h3>
+                    <div class="code-block">
+                        <pre># Zero Trust support access architecture
+1. **Device Trust**
+   - Managed corporate devices only
+   - Device compliance checks
+   - Certificate-based authentication
+
+2. **Continuous Verification**
+   - Behavioral analytics
+   - Risk-based authentication
+   - Step-up authentication for sensitive data
+
+3. **Microsegmentation**
+   - Isolate support systems from production
+   - Network segmentation
+   - Application-level firewalls
+
+# Example: BeyondTrust's detection
+- Noticed unusual support system access
+- Detected HAR file download attempts
+- Blocked attacker before data exfiltration
+- Shared IoCs with industry</pre>
+                    </div>
+                </div>
+                
+                <!-- Training Implications -->
+                <div class="story-section">
+                    <div class="story-title">What This Means for IAM Security Teams</div>
+                    
+                    <p class="story-lead">The Okta breach showed that identity providers themselves can be attack vectors. This changes how we think about third-party risk and identity security.</p>
+                    
+                    <h3>Critical Skills Gap Identified:</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-handshake"></i> Third-Party Risk</div>
+                            <p>Assessing and monitoring identity provider security</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-ticket-alt"></i> Support Security</div>
+                            <p>Securing support and helpdesk systems</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-history"></i> Session Management</div>
+                            <p>Token lifecycle, revocation, replay detection</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-bell"></i> Threat Detection</div>
+                            <p>Detecting identity provider compromises</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Recommended Training Path:</h3>
+                    <ol>
+                        <li><strong>Identity Provider Security</strong> (Week 1-2): Okta, Azure AD, Ping security features</li>
+                        <li><strong>Third-Party Risk Management</strong> (Week 3-4): Assessing vendor security</li>
+                        <li><strong>Session Security</strong> (Week 5-6): Token management, replay protection</li>
+                        <li><strong>Incident Response for IAM</strong> (Week 7-8): Identity breach response</li>
+                    </ol>
+                </div>
+                
+                <!-- Key Takeaways -->
+                <div class="story-section">
+                    <div class="story-title">Key Takeaways</div>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-ex

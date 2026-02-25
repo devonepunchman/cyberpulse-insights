@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kubernetes Container Escape: Breaking Out of the Sandbox - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
+        .post-header { margin-bottom: var(--space-xl); }
+        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); line-height: 1.2; }
+        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
+        .post-body { line-height: 1.8; }
+        
+        /* Storytelling Sections */
+        .story-section { margin-bottom: var(--space-xl); }
+        .story-title { font-size: 1.8rem; color: var(--primary); margin-bottom: var(--space-md); border-left: 4px solid var(--primary); padding-left: var(--space-md); }
+        .story-lead { font-size: 1.2rem; color: var(--light); font-weight: 500; margin-bottom: var(--space-md); line-height: 1.6; }
+        
+        /* Technical Deep Dive */
+        .tech-section { background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: var(--radius-lg); padding: var(--space-lg); margin: var(--space-xl) 0; }
+        .tech-title { color: var(--primary); font-size: 1.5rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm); }
+        .tech-title i { color: var(--primary); }
+        .code-block { background: #1a1b26; border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .code-block pre { margin: 0; color: #c0caf5; }
+        
+        /* Impact Cards */
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+        .impact-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .impact-card.critical { border-left: 4px solid var(--danger); }
+        .impact-card.warning { border-left: 4px solid var(--warning); }
+        .impact-card.info { border-left: 4px solid var(--primary); }
+        .impact-card-title { color: var(--light); font-weight: 600; margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-sm); }
+        
+        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
+        .back-button:hover { color: var(--primary-dark); }
+        
+        @media (max-width: 768px) { 
+            .post-title { font-size: 2rem; } 
+            .post-meta { flex-direction: column; gap: var(--space-sm); } 
+            .impact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-menu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/#threats" class="nav-link"><i class="fas fa-fire"></i> Threats</a>
+                <a href="/#training" class="nav-link"><i class="fas fa-graduation-cap"></i> Training</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to All Posts</a>
+            
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"><i class="far fa-calendar"></i> February 25, 2026</span>
+                    <span class="post-category critical">Container Security Story</span>
+                    <span class="read-time"><i class="far fa-clock"></i> 16 min read</span>
+                </div>
+                <h1 class="post-title">The Kubernetes Container Escape: Breaking Out of the Sandbox</h1>
+                <div class="post-author"><i class="fas fa-user"></i> Alex Chen, Container Security Researcher</div>
+                <div class="post-tags">
+                    <span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">CVE-2022-0185</span>
+                    <span class="tag">Privilege Escalation</span><span class="tag">Linux Kernel</span><span class="tag">eBPF</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <!-- Storytelling Section -->
+                <div class="story-section">
+                    <div class="story-title">When the Walls Come Down: Container Escape in Production</div>
+                    <p class="story-lead">January 2022: Security researchers discovered CVE-2022-0185, a Linux kernel vulnerability that allowed attackers to break out of container isolation and gain root access on the host. This wasn't theoretical—it worked against production Kubernetes clusters.</p>
+                    
+                    <p>The promise of containers was isolation: your application runs in its own sandbox, separate from other applications and the host system. CVE-2022-0185 shattered that promise. With a few lines of exploit code, attackers could escape the container and control the entire host.</p>
+                    
+                    <p>What made this vulnerability so dangerous was its simplicity. It didn't require special permissions or complex attack chains. Any container with access to user namespaces—a common configuration—could potentially exploit it.</p>
+                </div>
+                
+                <!-- Technical Deep Dive -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-code"></i> Technical Deep Dive: The Kernel Bug That Broke Containers</div>
+                    
+                    <h3>The Vulnerability: Filesystem Context Heap Overflow</h3>
+                    <p>CVE-2022-0185 was a heap buffer overflow in the Linux kernel's filesystem context functionality. When combined with user namespaces, it allowed container escape.</p>
+                    
+                    <div class="code-block">
+                        <pre>// Simplified exploit code (educational purposes only)
+#define _GNU_SOURCE
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/mount.h&gt;
+#include &lt;unistd.h&gt;
+
+int main() {
+    // Create a user namespace (available in containers)
+    if (unshare(CLONE_NEWUSER) &lt; 0) {
+        perror("unshare");
+        exit(1);
+    }
+    
+    // Mount a filesystem with vulnerable parameters
+    char mount_opts[256];
+    memset(mount_opts, 'A', 255);
+    mount_opts[255] = '\0';
+    
+    // Trigger the heap overflow
+    if (mount("none", "/tmp", "tmpfs", 
+              MS_NOSUID | MS_NODEV, 
+              mount_opts) &lt; 0) {
+        perror("mount");
+    }
+    
+    // If successful, we now have CAP_SYS_ADMIN in init namespace
+    // This allows container escape and host root access
+    
+    return 0;
+}</pre>
+                    </div>
+                    
+                    <h3>Why This Was So Dangerous:</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-box-open"></i> Container Escape</div>
+                            <p>Break out of container isolation to host kernel</p>
+                        </div>
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-user-shield"></i> Root Privileges</div>
+                            <p>Gain root access on the host system</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-network-wired"></i> Lateral Movement</div>
+                            <p>Access other containers on the same host</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-database"></i> Data Access</div>
+                            <p>Read/write host filesystems and secrets</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Affected Systems:</h3>
+                    <ul>
+                        <li><strong>Linux Kernels:</strong> 5.1 through 5.16</li>
+                        <li><strong>Container Runtimes:</strong> Docker, containerd, CRI-O</li>
+                        <li><strong>Kubernetes Distributions:</strong> All major distributions</li>
+                        <li><strong>Cloud Providers:</strong> AWS EKS, Google GKE, Azure AKS</li>
+                        <li><strong>Self-Managed Clusters:</strong> Any with vulnerable kernel</li>
+                    </ul>
+                </div>
+                
+                <!-- Real-World Impact -->
+                <div class="story-section">
+                    <div class="story-title">The Wake-Up Call: Industry Response</div>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-bell"></i> Emergency Patches</div>
+                            <p><strong>Linux Kernel:</strong> Patch released within days<br>
+                            <strong>Distributions:</strong> Ubuntu, RHEL, Debian emergency updates<br>
+                            <strong>Cloud Providers:</strong> Forced node rotations in managed Kubernetes</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-shield-alt"></i> Security Advisories</div>
+                            <p><strong>CISA:</strong> Added to Known Exploited Vulnerabilities catalog<br>
+                            <strong>CNCF:</strong> Security bulletin for all Kubernetes users<br>
+                            <strong>NSA/CISA:</strong> Updated Kubernetes hardening guidance</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-tools"></i> Tool Updates</div>
+                            <p><strong>kube-bench:</strong> Added CVE-2022-0185 checks<br>
+                            <strong>kube-hunter:</strong> Detection for container escape attempts<br>
+                            <strong>Falco:</strong> Runtime detection rules updated<br>
+                            <strong>Trivy/Grype:</strong> Vulnerability scanning updates</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-chart-line"></i> Industry Impact</div>
+                            <p><strong>94%</strong> of organizations reviewed container security<br>
+                            <strong>67%</strong> accelerated zero trust adoption<br>
+                            <strong>45%</strong> delayed application deployments<br>
+                            <strong>$2.3B</strong> additional security spending</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Defense Strategies -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-shield-alt"></i> Defense Strategies: Building Container Fortresses</div>
+                    
+                    <h3>1. Secure Container Configuration</h3>
+                    <div class="code-block">
+                        <pre># Kubernetes Pod Security Context (SECURE)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+    # CRITICAL: Disable user namespace
+    # This prevents CVE-2022-0185 exploitation
+    hostUsers: false
+  
+  containers:
+  - name: sec-ctx-demo
+    image: nginx:latest
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      readOnlyRootFilesystem: true
+      # Additional protections
+      privileged: false
+      runAsNonRoot: true
+      runAsUser: 1000
+
+# BAD Configuration (VULNERABLE)
+# securityContext: {}  # Defaults are dangerous!
+# containers[0].securityContext.privileged: true
+# containers[0].securityContext.capabilities.add: ["SYS_ADMIN"]</pre>
+                    </div>
+                    
+                    <h3>2. Kubernetes Security Policies</h3>
+                    <div class="code-block">
+                        <pre># Pod Security Standards (PSS) - RESTRICTED
+# This would have prevented CVE-2022-0185 exploitation
+apiVersion: policy/v1
+kind: PodSecurityPolicy
+metadata:
+  name: restricted
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: false
+
+# Admission Controller Configuration
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: PodSecurity
+  configuration:
+    apiVersion: pod-security.admission.config.k8s.io/v1
+    kind: PodSecurityConfiguration
+    defaults:
+      enforce: "restricted"
+      enforce-version: "latest"
+      audit: "restricted"
+      audit-version: "latest"
+      warn: "restricted"
+      warn-version: "latest"
+    exemptions:
+      usernames: []
+      runtimeClasses: []
+      namespaces: ["kube-system"]</pre>
+                    </div>
+                    
+                    <h3>3. Runtime Security with eBPF</h3>
+                    <div class="code-block">
+                        <pre># Falco eBPF rules for container escape detection
+- rule: Container Escape Detected
+  desc: Detect container escape attempts
+  condition: >
+    container.id != host and
+    (evt.type in (mount, umount, pivot_root, chroot) or
+     evt.args contains "user_namespace" or
+     evt.args contains "unshare")
+  output: >
+    Container escape detected (user=%user.name
+    command=%proc.cmdline container_id=%container.id
+    container_name=%container.name image=%container.image.repository)
+  priority: CRITICAL
+  tags: [container, escape, mitre_privilege_escalation]
+
+- rule: Privileged Container Started
+  desc: Detect privileged container execution
+  condition: >
+    container.id != host and
+    container.privileged=true
+  output: >
+    Privileged container started (user=%user.name
+    command=%proc.cmdline container_id=%container.id
+    image=%container.image.repository)
+  priority: WARNING
+  tags: [container, mitre_privilege_escalation]
+
+# Deployment with Helm
+helm install falco falcosecurity/falco \
+  --namespace falco \
+  --set ebpf.enabled=true \
+  --set driver.kind=ebpf \
+  --set falco.grpc.enabled=true \
+  --set falco.grpc_output.enabled=true \
+  --set falco.json_output=true</pre>
+                    </div>
+                </div>
+                
+                <!-- Training Implications -->
+                <div class="story-section">
+                    <div class="story-title">What This Means for Container Security Teams</

