@@ -285,14 +285,14 @@ code, pre {
 
 /* Hero Section - Modern Design */
 .hero {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-lg) 0;
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, 
         rgba(15, 23, 42, 0.95) 0%,
         rgba(30, 41, 59, 0.9) 50%,
         rgba(15, 23, 42, 0.95) 100%);
-    min-height: 85vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
 }
@@ -326,7 +326,7 @@ code, pre {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: var(--space-md);
     background: linear-gradient(135deg, 
         var(--primary) 0%,
@@ -364,10 +364,10 @@ code, pre {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--gray-light);
-    margin-bottom: var(--space-xl);
-    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+    line-height: 1.7;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -376,8 +376,8 @@ code, pre {
 .hero-stats {
     display: flex;
     justify-content: center;
-    gap: var(--space-xl);
-    margin-top: var(--space-xl);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
     flex-wrap: wrap;
 }
 
@@ -385,12 +385,12 @@ code, pre {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--space-lg);
+    padding: var(--space-md);
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    min-width: 150px;
+    min-width: 120px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -413,7 +413,7 @@ code, pre {
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--light);
 }
@@ -492,6 +492,11 @@ code, pre {
     margin-bottom: var(--space-xl);
 }
 
+/* Latest Posts Section */
+.latest-posts {
+    padding-top: var(--space-xl);
+}
+
 .section-header h2 {
     display: flex;
     align-items: center;
@@ -508,18 +513,18 @@ code, pre {
 /* Posts Grid */
 .posts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-md);
     margin-bottom: var(--space-xl);
 }
 
 /* Post Cards - Modern Design */
 .post-card {
     background: rgba(30, 41, 59, 0.8);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid rgba(14, 165, 233, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     position: relative;
 }
@@ -537,10 +542,10 @@ code, pre {
 }
 
 .post-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-5px);
     box-shadow: 
-        0 20px 40px rgba(14, 165, 233, 0.15),
-        0 10px 20px rgba(0, 0, 0, 0.3);
+        0 10px 25px rgba(14, 165, 233, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.2);
     border-color: rgba(14, 165, 233, 0.3);
 }
 
@@ -549,7 +554,7 @@ code, pre {
 }
 
 .post-header {
-    padding: var(--space-xl);
+    padding: var(--space-lg);
 }
 
 .post-meta {
@@ -601,8 +606,8 @@ code, pre {
 }
 
 .post-title {
-    font-size: 1.5rem;
-    margin-bottom: var(--space-md);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
     color: var(--light);
     line-height: 1.4;
     transition: color 0.3s ease;
@@ -638,9 +643,9 @@ code, pre {
 
 .post-excerpt {
     color: var(--gray-light);
-    margin-bottom: var(--space-lg);
-    line-height: 1.7;
-    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .post-author {
@@ -656,14 +661,14 @@ code, pre {
 }
 
 .post-footer {
-    padding: var(--space-lg) var(--space-xl);
+    padding: var(--space-md) var(--space-lg);
     background: rgba(15, 23, 42, 0.6);
     border-top: 1px solid rgba(14, 165, 233, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .post-tags {
