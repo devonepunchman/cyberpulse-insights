@@ -3,185 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberPulse Insights | Cybersecurity Threat Intelligence</title>
+    <title>CyberPulse Insights - Cybersecurity Threat Intelligence</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
+        <div class="nav-container">
             <div class="nav-brand">
-                <i class="fas fa-shield-alt"></i>
-                <span class="brand-name">CyberPulse</span>
-                <span class="brand-subtitle">Insights</span>
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-newspaper"></i> Threat Intel</a></li>
-                <li><a href="#"><i class="fas fa-graduation-cap"></i> Training</a></li>
-                <li><a href="#"><i class="fas fa-tools"></i> Resources</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
+            
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
+            
+            <div class="nav-menu">
+                <a href="/" class="nav-link active">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#threats" class="nav-link">
+                    <i class="fas fa-fire"></i> Threats
+                </a>
+                <a href="#analysis" class="nav-link">
+                    <i class="fas fa-chart-line"></i> Analysis
+                </a>
+                <a href="#training" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i> Training
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Daily Cybersecurity Threat Intelligence</h1>
-                <p class="hero-subtitle">Professional analysis of emerging threats, vulnerabilities, and attack patterns for security practitioners</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <i class="fas fa-bug"></i>
-                        <span class="stat-number">247</span>
-                        <span class="stat-label">Threats Tracked</span>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-shield-virus"></i>
-                        <span class="stat-number">89</span>
-                        <span class="stat-label">CVEs Analyzed</span>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-users"></i>
-                        <span class="stat-number">5.2k</span>
-                        <span class="stat-label">Security Pros</span>
-                    </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-highlight">Cybersecurity</span> Threat Intelligence
+            </h1>
+            <p class="hero-subtitle">
+                Daily analysis of critical security threats, vulnerabilities, and attack patterns.
+                Stay ahead with actionable intelligence for security professionals.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Threats Tracked</div>
                 </div>
-            </div>
-            <div class="hero-visual">
-                <div class="cyber-visual">
-                    <div class="node node-1"><i class="fas fa-server"></i></div>
-                    <div class="node node-2"><i class="fas fa-network-wired"></i></div>
-                    <div class="node node-3"><i class="fas fa-database"></i></div>
-                    <div class="node node-4"><i class="fas fa-lock"></i></div>
-                    <div class="connection"></div>
-                    <div class="pulse"></div>
+                <div class="stat">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">CVEs Analyzed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5.2k</div>
+                    <div class="stat-label">Security Pros</div>
                 </div>
             </div>
         </div>
+        <div class="hero-background">
+            <div class="grid-overlay"></div>
+            <div class="scan-line"></div>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Latest Posts -->
-        <section class="latest-posts">
+    <!-- Latest Posts Section -->
+    <section class="latest-posts" id="threats">
+        <div class="container">
             <div class="section-header">
                 <h2><i class="fas fa-fire"></i> Latest Threat Intelligence</h2>
                 <p class="section-subtitle">Daily analysis of critical cybersecurity developments</p>
             </div>
 
-            <div class="posts-grid" id="posts-container">
-                <!-- Posts will be loaded here dynamically -->
-                <div class="loading">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <p>Loading latest threat intelligence...</p>
-                </div>
-            </div>
-        </section>
+            <div class="posts-grid">
+                <!-- Post 1: Critical Supply Chain Attack -->
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-meta">
+                            <span class="post-date">
+                                <i class="far fa-calendar"></i> February 25, 2026
+                            </span>
+                            <span class="post-category critical">
+                                Critical
+                            </span>
+                        </div>
+                        <h3 class="post-title">Critical Supply Chain Attack Targets Major Software Package Repositories</h3>
+                        <p class="post-excerpt">A sophisticated supply chain attack targeting npm, PyPI, and RubyGems repositories has been discovered, affecting thousands of organizations. Attackers are using dependency confusion and typosquatting techniques to inject malicious packages into development pipelines.</p>
+                        <p class="post-author"><i class="fas fa-user"></i> Alex Chen, Senior Threat Intelligence Analyst</p>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-tags">
+                            <span class="tag">Supply Chain</span>
+                            <span class="tag">npm</span>
+                            <span class="tag">PyPI</span>
+                            <span class="tag">Zero-Day</span>
+                            <span class="tag">CVE-2026-2156</span>
+                        </div>
+                        <div class="post-meta-right">
+                            <span class="read-time">
+                                <i class="far fa-clock"></i> 9 min read
+                            </span>
+                            <a href="posts/2026-02-25-critical-supply-chain-attack-software-repositories.md" class="read-more">
+                                Read Analysis <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-        <!-- Threat Categories -->
-        <section class="categories">
-            <div class="section-header">
-                <h2><i class="fas fa-tags"></i> Threat Categories</h2>
-                <p class="section-subtitle">Focus areas for security professionals</p>
-            </div>
-            <div class="categories-grid">
-                <div class="category-card critical">
-                    <i class="fas fa-skull-crossbones"></i>
-                    <h3>Critical Vulnerabilities</h3>
-                    <p>CVSS 9.0+ exploits and zero-days requiring immediate attention</p>
-                </div>
-                <div class="category-card ransomware">
-                    <i class="fas fa-lock"></i>
-                    <h3>Ransomware Trends</h3>
-                    <p>Latest ransomware families, TTPs, and defense strategies</p>
-                </div>
-                <div class="category-card apt">
-                    <i class="fas fa-user-secret"></i>
-                    <h3>APT Activity</h3>
-                    <p>Advanced Persistent Threat groups and nation-state attacks</p>
-                </div>
-                <div class="category-card cloud">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Security</h3>
-                    <p>Cloud infrastructure attacks and misconfigurations</p>
-                </div>
-                <div class="category-card iot">
-                    <i class="fas fa-microchip"></i>
-                    <h3>IoT & OT Threats</h3>
-                    <p>Industrial control systems and IoT device vulnerabilities</p>
-                </div>
-                <div class="category-card ai">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Security</h3>
-                    <p>ML model attacks, AI-powered threats, and defensive AI</p>
-                </div>
-            </div>
-        </section>
+                <!-- Post 2: Container Security Gaps -->
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-meta">
+                            <span class="post-date">
+                                <i class="far fa-calendar"></i> February 25, 2026
+                            </span>
+                            <span class="post-category cloud">
+                                Cloud
+                            </span>
+                        </div>
+                        <h3 class="post-title">Container Security Gaps in Cloud-Native Deployments</h3>
+                        <p class="post-excerpt">Analysis of recent container security incidents reveals critical gaps in cloud-native deployments. Multiple vulnerabilities in container orchestration layers could enable privilege escalation and data exfiltration.</p>
+                        <p class="post-author"><i class="fas fa-user"></i> Dr. Sarah Johnson, Principal Security Researcher</p>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-tags">
+                            <span class="tag">GCP</span>
+                            <span class="tag">Threat Intelligence</span>
+                            <span class="tag">Microsoft 365</span>
+                            <span class="tag">Azure</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <div class="post-meta-right">
+                            <span class="read-time">
+                                <i class="far fa-clock"></i> 10 min read
+                            </span>
+                            <a href="posts/2026-02-25-container-security-gaps-in-cloud-native-deployment.md" class="read-more">
+                                Read Analysis <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
-        <!-- Training CTA -->
-        <section class="training-cta">
+                <!-- Post 3: IAM Misconfigurations -->
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-meta">
+                            <span class="post-date">
+                                <i class="far fa-calendar"></i> February 25, 2026
+                            </span>
+                            <span class="post-category cloud">
+                                Cloud
+                            </span>
+                        </div>
+                        <h3 class="post-title">IAM Misconfigurations in Azure Cause Breaches</h3>
+                        <p class="post-excerpt">Recent security incidents highlight critical IAM misconfigurations in Azure deployments leading to data exposure. Analysis includes detection rules and remediation strategies.</p>
+                        <p class="post-author"><i class="fas fa-user"></i> Marcus Rodriguez, Cloud Security Architect</p>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-tags">
+                            <span class="tag">IAM</span>
+                            <span class="tag">Threat Intelligence</span>
+                            <span class="tag">Security</span>
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Azure</span>
+                        </div>
+                        <div class="post-meta-right">
+                            <span class="read-time">
+                                <i class="far fa-clock"></i> 8 min read
+                            </span>
+                            <a href="posts/2026-02-25-iam-misconfigurations-in-azure-cause-breaches.md" class="read-more">
+                                Read Analysis <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 4: Kubernetes Zero-Day -->
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-meta">
+                            <span class="post-date">
+                                <i class="far fa-calendar"></i> February 21, 2026
+                            </span>
+                            <span class="post-category critical">
+                                Critical
+                            </span>
+                        </div>
+                        <h3 class="post-title">Zero-Day in Major Cloud Provider's Container Service</h3>
+                        <p class="post-excerpt">A critical vulnerability in Kubernetes orchestration layer allows privilege escalation and container escape. Immediate patching required for all cloud deployments.</p>
+                        <p class="post-author"><i class="fas fa-user"></i> Alex Chen, Senior Threat Intelligence Analyst</p>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-tags">
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Cloud Security</span>
+                            <span class="tag">Zero-Day</span>
+                            <span class="tag">CVE-2026-1234</span>
+                        </div>
+                        <div class="post-meta-right">
+                            <span class="read-time">
+                                <i class="far fa-clock"></i> 8 min read
+                            </span>
+                            <a href="posts/2026-02-21-zero-day-cloud-container.md" class="read-more">
+                                Read Analysis <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training CTA -->
+    <section class="training-cta" id="training">
+        <div class="container">
             <div class="cta-content">
-                <h2><i class="fas fa-graduation-cap"></i> Build Your Cyber Defense Skills</h2>
-                <p>Stay ahead of threats with hands-on security training from industry experts. Our courses cover offensive security, cloud defense, threat hunting, and incident response.</p>
+                <h2><i class="fas fa-graduation-cap"></i> Build Your Cybersecurity Skills</h2>
+                <p>Today's threats require continuous learning. Our training programs help security professionals stay ahead of evolving attack techniques.</p>
+                
                 <div class="cta-features">
                     <div class="feature">
-                        <i class="fas fa-vial"></i>
-                        <span>Hands-on Labs</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-certificate"></i>
-                        <span>Certification Prep</span>
+                        <i class="fas fa-code"></i>
+                        <h4>Hands-On Labs</h4>
+                        <p>Real-world scenarios with guided exercises</p>
                     </div>
                     <div class="feature">
                         <i class="fas fa-chart-line"></i>
-                        <span>Real-world Scenarios</span>
+                        <h4>Threat Analysis</h4>
+                        <p>Learn to analyze and respond to emerging threats</p>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>Expert Instructors</span>
+                        <i class="fas fa-certificate"></i>
+                        <h4>Certification</h4>
+                        <p>Industry-recognized credentials for career advancement</p>
                     </div>
                 </div>
-                <a href="#" class="cta-button">
-                    <i class="fas fa-arrow-right"></i>
-                    Explore Training Programs
+                
+                <a href="https://cyberpulse.ai/training" class="cta-button">
+                    <i class="fas fa-arrow-right"></i> Explore Training Programs
                 </a>
             </div>
-            <div class="cta-visual">
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span class="terminal-title">security-training</span>
-                    </div>
-                    <div class="terminal-body">
-                        <pre><code>$ nmap -sV 192.168.1.0/24
-Starting Nmap 7.94
-PORT     STATE SERVICE    VERSION
-22/tcp   open  ssh        OpenSSH 8.9
-80/tcp   open  http       nginx 1.24.0
-443/tcp  open  ssl/https  nginx 1.24.0
-3389/tcp open  ms-wbt-server
-...
-$ python3 exploit.py --target 192.168.1.100
-[+] Vulnerability CVE-2026-1234 detected
-[+] Exploit successful: root access obtained
-[+] Security patch available via training module</code></pre>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -189,43 +261,40 @@ $ python3 exploit.py --target 192.168.1.100
             <div class="footer-content">
                 <div class="footer-brand">
                     <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <h3>CyberPulse Insights</h3>
-                        <p>Daily cybersecurity intelligence for professionals</p>
-                    </div>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                    <p class="footer-tagline">Daily cybersecurity threat intelligence for security professionals.</p>
                 </div>
+                
                 <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Threat Intel</h4>
-                        <a href="#">Daily Reports</a>
-                        <a href="#">Vulnerability DB</a>
+                    <div class="footer-column">
+                        <h4>Threat Categories</h4>
+                        <a href="#">Critical Vulnerabilities</a>
+                        <a href="#">Cloud Security</a>
+                        <a href="#">Ransomware</a>
                         <a href="#">APT Groups</a>
-                        <a href="#">Malware Analysis</a>
                     </div>
-                    <div class="link-group">
-                        <h4>Training</h4>
-                        <a href="#">Courses</a>
-                        <a href="#">Certifications</a>
-                        <a href="#">Labs</a>
-                        <a href="#">Enterprise</a>
-                    </div>
-                    <div class="link-group">
+                    
+                    <div class="footer-column">
                         <h4>Resources</h4>
-                        <a href="#">Tools</a>
-                        <a href="#">Cheat Sheets</a>
-                        <a href="#">Research Papers</a>
-                        <a href="#">Community</a>
+                        <a href="#">Threat Reports</a>
+                        <a href="#">Detection Rules</a>
+                        <a href="#">Incident Response</a>
+                        <a href="#">Training Materials</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#"><i class="fas fa-envelope"></i> Newsletter</a>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2026 CyberPulse Security Training. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                </div>
+                <p>&copy; 2026 CyberPulse Insights. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p class="footer-note">This blog is updated daily with the latest cybersecurity threat intelligence.</p>
             </div>
         </div>
     </footer>
