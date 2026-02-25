@@ -1,42 +1,58 @@
 {
   "posts": [
     {
+      "id": 1,
+      "date": "2026-02-25",
+      "title": "Critical Supply Chain Attack Targets Major Software Package Repositories",
+      "category": "Critical",
+      "excerpt": "A sophisticated supply chain attack targeting npm, PyPI, and RubyGems repositories has been discovered, affecting thousands of organizations. Attackers are using dependency confusion and typosquatting techniques to inject malicious packages into development pipelines.",
+      "tags": ["Supply Chain", "npm", "PyPI", "Zero-Day", "CVE-2026-2156", "Dependency Confusion", "Software Security"],
+      "read_time": 9,
+      "author": "Alex Chen, Senior Threat Intelligence Analyst",
+      "filename": "2026-02-25-critical-supply-chain-attack-software-repositories.md"
+    },
+    {
       "id": 2,
       "date": "2026-02-25",
       "title": "Container Security Gaps in Cloud-Native Deployments",
       "category": "Cloud",
-      "excerpt": "Misconfigurations in cloud infrastructure lead to data exposure. Best practices for securing cloud deployments and monitoring for anomalies.",
-      "tags": [
-        "GCP",
-        "Threat Intelligence",
-        "Microsoft 365",
-        "Azure",
-        "Security",
-        "AWS",
-        "Cybersecurity",
-        "IAM"
-      ],
+      "excerpt": "Analysis of recent container security incidents reveals critical gaps in cloud-native deployments. Multiple vulnerabilities in container orchestration layers could enable privilege escalation and data exfiltration.",
+      "tags": ["GCP", "Threat Intelligence", "Microsoft 365", "Azure", "Security"],
       "read_time": 10,
-      "author": "Dr. Sarah Johnson, Principal Security Researcher"
+      "author": "Dr. Sarah Johnson, Principal Security Researcher",
+      "filename": "2026-02-25-container-security-gaps-in-cloud-native-deployment.md"
     },
     {
-      "id": 1,
+      "id": 3,
       "date": "2026-02-25",
       "title": "IAM Misconfigurations in Azure Cause Breaches",
       "category": "Cloud",
-      "excerpt": "Misconfigurations in cloud infrastructure lead to data exposure. Best practices for securing cloud deployments and monitoring for anomalies.",
-      "tags": [
-        "IAM",
-        "Threat Intelligence",
-        "Security",
-        "Cybersecurity",
-        "Azure",
-        "Configuration",
-        "GCP",
-        "AWS"
-      ],
-      "read_time": 10,
-      "author": "Marcus Rodriguez, Cloud Security Architect"
+      "excerpt": "Recent security incidents highlight critical IAM misconfigurations in Azure deployments leading to data exposure. Analysis includes detection rules and remediation strategies.",
+      "tags": ["IAM", "Threat Intelligence", "Security", "Cybersecurity", "Azure"],
+      "read_time": 8,
+      "author": "Marcus Rodriguez, Cloud Security Architect",
+      "filename": "2026-02-25-iam-misconfigurations-in-azure-cause-breaches.md"
+    },
+    {
+      "id": 4,
+      "date": "2026-02-21",
+      "title": "Zero-Day in Major Cloud Provider's Container Service: Critical Kubernetes Vulnerability Analysis",
+      "category": "Critical",
+      "excerpt": "A critical vulnerability in Kubernetes orchestration layer allows privilege escalation and container escape. Immediate patching required for all cloud deployments.",
+      "tags": ["Kubernetes", "Cloud Security", "Zero-Day", "CVE-2026-1234", "Container Escape", "Privilege Escalation"],
+      "read_time": 8,
+      "author": "Alex Chen, Senior Threat Intelligence Analyst",
+      "filename": "2026-02-21-zero-day-cloud-container.md"
     }
-  ]
+  ],
+  "last_updated": "2026-02-25T02:51:00Z",
+  "total_posts": 4,
+  "categories": {
+    "Critical": 2,
+    "Cloud": 2,
+    "Ransomware": 0,
+    "APT": 0,
+    "IoT": 0,
+    "AI Security": 0
+  }
 }

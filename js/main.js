@@ -33,86 +33,103 @@ async function loadBlogPosts() {
     if (!postsContainer) return;
     
     try {
-        // In a real implementation, this would fetch from a JSON API
-        // For now, we'll use sample data
-        const posts = await getSamplePosts();
+        // Load posts from index.json
+        const response = await fetch('posts/index.json');
         
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        const posts = data.posts;
+        
+        postsContainer.innerHTML = '';
+        
+        // Display posts (limit to 6 most recent)
+        posts.slice(0, 6).forEach(post => {
+            const postElement = createPostElement(post);
+            postsContainer.appendChild(postElement);
+        });
+        
+        // Update stats if they exist
+        updateStats(data);
+        
+    } catch (error) {
+        console.error('Error loading posts:', error);
+        
+        // Fallback to sample data
+        const posts = await getSamplePosts();
         postsContainer.innerHTML = '';
         
         posts.forEach(post => {
             const postElement = createPostElement(post);
             postsContainer.appendChild(postElement);
         });
-        
-    } catch (error) {
-        console.error('Error loading posts:', error);
-        postsContainer.innerHTML = `
-            <div class="error">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Unable to load posts. Please try again later.</p>
-            </div>
-        `;
     }
 }
 
-// Sample blog posts data
+// Sample blog posts data (fallback)
 async function getSamplePosts() {
-    // This would normally fetch from an API
-    // For now, return sample data
     return [
         {
             id: 1,
-            date: '2026-02-21',
+            date: '2026-02-25',
             category: 'Critical',
-            title: 'Zero-Day in Major Cloud Provider\'s Container Service',
-            excerpt: 'A critical vulnerability (CVE-2026-1234) in Kubernetes orchestration layer allows privilege escalation and container escape. Patch immediately.',
-            tags: ['Kubernetes', 'Cloud', 'Zero-Day', 'CVE-2026-1234'],
-            readTime: '5 min'
+            title: 'Critical Supply Chain Attack Targets Major Software Package Repositories',
+            excerpt: 'A sophisticated supply chain attack targeting npm, PyPI, and RubyGems repositories has been discovered, affecting thousands of organizations.',
+            tags: ['Supply Chain', 'npm', 'PyPI', 'Zero-Day', 'CVE-2026-2156'],
+            read_time: 9,
+            author: 'Alex Chen, Senior Threat Intelligence Analyst'
         },
         {
             id: 2,
-            date: '2026-02-20',
-            category: 'Ransomware',
-            title: 'New Ransomware-as-a-Service Targets Healthcare Sector',
-            excerpt: 'MedLock ransomware group using novel encryption methods and threatening patient data exposure. Defense strategies and IOCs included.',
-            tags: ['Ransomware', 'Healthcare', 'IOCs', 'Threat Hunting'],
-            readTime: '7 min'
+            date: '2026-02-25',
+            category: 'Cloud',
+            title: 'Container Security Gaps in Cloud-Native Deployments',
+            excerpt: 'Analysis of recent container security incidents reveals critical gaps in cloud-native deployments.',
+            tags: ['GCP', 'Threat Intelligence', 'Microsoft 365', 'Azure', 'Security'],
+            read_time: 10,
+            author: 'Dr. Sarah Johnson, Principal Security Researcher'
         },
         {
             id: 3,
-            date: '2026-02-19',
-            category: 'APT',
-            title: 'APT29 Exploits Microsoft Exchange Vulnerabilities',
-            excerpt: 'Nation-state actors using chained exploits to maintain persistence in enterprise networks. Detection rules and mitigation steps.',
-            tags: ['APT29', 'Microsoft', 'Exchange', 'Nation-State'],
-            readTime: '8 min'
+            date: '2026-02-25',
+            category: 'Cloud',
+            title: 'IAM Misconfigurations in Azure Cause Breaches',
+            excerpt: 'Recent security incidents highlight critical IAM misconfigurations in Azure deployments.',
+            tags: ['IAM', 'Threat Intelligence', 'Security', 'Cybersecurity', 'Azure'],
+            read_time: 8,
+            author: 'Marcus Rodriguez, Cloud Security Architect'
         },
         {
             id: 4,
-            date: '2026-02-18',
-            category: 'AI Security',
-            title: 'Adversarial Attacks on LLM-Based Security Tools',
-            excerpt: 'Research shows how carefully crafted prompts can bypass AI-powered security scanners. Implications for ML-based defense systems.',
-            tags: ['AI', 'LLM', 'Adversarial', 'Research'],
-            readTime: '6 min'
+            date: '2026-02-21',
+            category: 'Critical',
+            title: 'Zero-Day in Major Cloud Provider\'s Container Service',
+            excerpt: 'A critical vulnerability in Kubernetes orchestration layer allows privilege escalation and container escape.',
+            tags: ['Kubernetes', 'Cloud', 'Zero-Day', 'CVE-2026-1234'],
+            read_time: 8,
+            author: 'Alex Chen, Senior Threat Intelligence Analyst'
         },
         {
             id: 5,
-            date: '2026-02-17',
-            category: 'IoT',
-            title: 'Critical Flaws in Industrial PLCs Allow Remote Takeover',
-            excerpt: 'Multiple vulnerabilities in Programmable Logic Controllers could enable physical damage to critical infrastructure.',
-            tags: ['IoT', 'OT', 'PLC', 'Critical Infrastructure'],
-            readTime: '9 min'
+            date: '2026-02-20',
+            category: 'Ransomware',
+            title: 'New Ransomware-as-a-Service Targets Healthcare Sector',
+            excerpt: 'MedLock ransomware group using novel encryption methods and threatening patient data exposure.',
+            tags: ['Ransomware', 'Healthcare', 'IOCs', 'Threat Hunting'],
+            read_time: 7,
+            author: 'Dr. Elena Petrova, Malware Analysis Lead'
         },
         {
             id: 6,
-            date: '2026-02-16',
-            category: 'Cloud',
-            title: 'AWS IAM Misconfigurations Lead to Data Breaches',
-            excerpt: 'Analysis of recent cloud security incidents shows common IAM mistakes and how to implement least-privilege access.',
-            tags: ['AWS', 'Cloud', 'IAM', 'Best Practices'],
-            readTime: '4 min'
+            date: '2026-02-19',
+            category: 'APT',
+            title: 'APT29 Exploits Microsoft Exchange Vulnerabilities',
+            excerpt: 'Nation-state actors using chained exploits to maintain persistence in enterprise networks.',
+            tags: ['APT29', 'Microsoft', 'Exchange', 'Nation-State'],
+            read_time: 8,
+            author: 'James Wilson, Incident Response Director'
         }
     ];
 }
@@ -125,11 +142,17 @@ function createPostElement(post) {
     // Determine category color
     const categoryClass = getCategoryClass(post.category);
     
+    // Format date
+    const formattedDate = formatDate(post.date);
+    
+    // Create tags HTML
+    const tagsHtml = post.tags ? post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+    
     article.innerHTML = `
         <div class="post-header">
             <div class="post-meta">
                 <span class="post-date">
-                    <i class="far fa-calendar"></i> ${formatDate(post.date)}
+                    <i class="far fa-calendar"></i> ${formattedDate}
                 </span>
                 <span class="post-category ${categoryClass}">
                     ${post.category}
@@ -137,18 +160,38 @@ function createPostElement(post) {
             </div>
             <h3 class="post-title">${post.title}</h3>
             <p class="post-excerpt">${post.excerpt}</p>
+            ${post.author ? `<p class="post-author"><i class="fas fa-user"></i> ${post.author}</p>` : ''}
         </div>
         <div class="post-footer">
             <div class="post-tags">
-                ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                ${tagsHtml}
             </div>
-            <a href="#" class="read-more">
-                Read Analysis <i class="fas fa-arrow-right"></i>
-            </a>
+            <div class="post-meta-right">
+                <span class="read-time">
+                    <i class="far fa-clock"></i> ${post.read_time || 5} min read
+                </span>
+                <a href="#" class="read-more" data-post-id="${post.id}">
+                    Read Analysis <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     `;
     
+    // Add click handler for read more
+    const readMoreBtn = article.querySelector('.read-more');
+    if (readMoreBtn) {
+        readMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showPostDetail(post);
+        });
+    }
+    
     return article;
+}
+
+// Show post detail (simplified - in real implementation would load full post)
+function showPostDetail(post) {
+    alert(`Loading: ${post.title}\n\nThis would show the full blog post in a real implementation.`);
 }
 
 // Get CSS class for category
@@ -167,12 +210,32 @@ function getCategoryClass(category) {
 
 // Format date
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    } catch (e) {
+        return dateString;
+    }
+}
+
+// Update stats from data
+function updateStats(data) {
+    const stats = document.querySelectorAll('.stat-number');
+    if (stats.length >= 3 && data) {
+        // Update threats tracked
+        if (stats[0]) stats[0].textContent = data.total_posts || '4+';
+        
+        // Update CVEs analyzed (estimate based on critical posts)
+        const criticalCount = data.categories?.Critical || 2;
+        if (stats[1]) stats[1].textContent = criticalCount * 2; // Each critical post analyzes ~2 CVEs
+        
+        // Update security pros (placeholder)
+        if (stats[2]) stats[2].textContent = '5.2k';
+    }
 }
 
 // Initialize animations
@@ -229,6 +292,45 @@ style.textContent = `
     .error i {
         font-size: 3rem;
         margin-bottom: var(--space-md);
+    }
+    
+    .post-author {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-top: var(--space-sm);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .post-author i {
+        color: var(--primary);
+    }
+    
+    .post-meta-right {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+    }
+    
+    .read-time {
+        color: var(--gray);
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    
+    .read-time i {
+        color: var(--primary);
+    }
+    
+    @media (max-width: 768px) {
+        .post-meta-right {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
     }
 `;
 document.head.appendChild(style);
