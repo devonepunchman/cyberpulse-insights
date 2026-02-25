@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security Breaches: Real Incident Analysis - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
+        .post-header { margin-bottom: var(--space-xl); border-bottom: 2px solid var(--dark-light); padding-bottom: var(--space-lg); }
+        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); }
+        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
+        .post-body { line-height: 1.8; }
+        .post-body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-md); color: var(--primary); border-bottom: 1px solid var(--dark-light); padding-bottom: var(--space-sm); }
+        .post-body h3 { margin-top: var(--space-lg); margin-bottom: var(--space-sm); color: var(--light); }
+        .post-body p { margin-bottom: var(--space-md); color: var(--gray-light); }
+        .post-body ul, .post-body ol { margin-bottom: var(--space-md); padding-left: var(--space-lg); color: var(--gray-light); }
+        .post-body li { margin-bottom: var(--space-sm); }
+        .code-block { background: var(--dark-light); border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .code-block pre { margin: 0; color: var(--light); }
+        .alert { background: var(--dark-light); border-left: 4px solid var(--danger); padding: var(--space-md); margin: var(--space-md) 0; border-radius: var(--radius-sm); }
+        .alert.warning { border-left-color: var(--warning); }
+        .alert.info { border-left-color: var(--primary); }
+        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
+        .back-button:hover { color: var(--primary-dark); }
+        .reference { background: rgba(255, 255, 255, 0.05); padding: var(--space-md); border-radius: var(--radius-md); margin: var(--space-md) 0; border-left: 3px solid var(--secondary); }
+        .reference-title { font-weight: 600; color: var(--light); margin-bottom: var(--space-xs); }
+        .reference-authors { color: var(--gray); font-size: 0.9rem; }
+        .reference-source { color: var(--primary); font-size: 0.9rem; }
+        .case-study { background: rgba(14, 165, 233, 0.1); border: 1px solid var(--primary); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; }
+        .case-study-title { color: var(--primary); font-weight: 600; margin-bottom: var(--space-sm); }
+        @media (max-width: 768px) { .post-title { font-size: 2rem; } .post-meta { flex-direction: column; gap: var(--space-sm); } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-menu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/#threats" class="nav-link"><i class="fas fa-fire"></i> Threats</a>
+                <a href="/#training" class="nav-link"><i class="fas fa-graduation-cap"></i> Training</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to All Posts</a>
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"><i class="far fa-calendar"></i> February 25, 2026</span>
+                    <span class="post-category cloud">Cloud Security</span>
+                    <span class="read-time"><i class="far fa-clock"></i> 14 min read</span>
+                </div>
+                <h1 class="post-title">Cloud Security Breaches: Analysis of Real Incidents & Defense Strategies</h1>
+                <div class="post-author"><i class="fas fa-user"></i> Dr. Sarah Johnson, Cloud Security Architect</div>
+                <div class="post-tags">
+                    <span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">GCP</span>
+                    <span class="tag">IAM</span><span class="tag">S3</span><span class="tag">Data Breach</span><span class="tag">Misconfiguration</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <div class="alert">
+                    <strong>Executive Summary:</strong> Cloud misconfigurations remain the leading cause of data breaches in cloud environments. This analysis examines real cloud security incidents from AWS, Azure, and GCP, with evidence-based research and defense strategies.
+                </div>
+                
+                <h2>1. Capital One Data Breach (2019) - AWS S3 Misconfiguration</h2>
+                
+                <div class="case-study">
+                    <div class="case-study-title">Case Study: Capital One</div>
+                    <p><strong>Date:</strong> March 2019<br>
+                    <strong>Impact:</strong> 100+ million customer records exposed<br>
+                    <strong>Root Cause:</strong> AWS S3 bucket misconfiguration with overly permissive WAF rules</p>
+                </div>
+                
+                <p>The Capital One breach exposed sensitive data of over 100 million customers due to a misconfigured AWS Web Application Firewall (WAF) (Capital One, 2019). The attacker exploited a Server-Side Request Forgery (SSRF) vulnerability to access credentials and then exfiltrate data from S3 buckets.</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Capital One. (2019). Information on the Capital One Cyber Incident.</div>
+                    <div class="reference-authors">Capital One Financial Corporation</div>
+                    <div class="reference-source">Capital One Investor Relations. Retrieved from https://investor.capitalone.com/financial-information/sec-filings</div>
+                </div>
+                
+                <h3>Technical Analysis:</h3>
+                <ul>
+                    <li><strong>Attack Vector:</strong> SSRF vulnerability in web application</li>
+                    <li><strong>Cloud Service:</strong> AWS EC2 with IAM role attached</li>
+                    <li><strong>Data Exposed:</strong> 140,000 Social Security numbers, 80,000 bank account numbers</li>
+                    <li><strong>Cost:</strong> $190 million in fines and remediation</li>
+                </ul>
+                
+                <div class="code-block">
+                    <pre># Example of overly permissive S3 bucket policy (DO NOT USE)
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::customer-data-bucket/*"
+    }
+  ]
+}</pre>
+                </div>
+                
+                <div class="code-block">
+                    <pre># Secure S3 bucket policy example
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::123456789012:role/AppRole"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::customer-data-bucket/*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "10.0.0.0/16"
+        }
+      }
+    }
+  ]
+}</pre>
+                </div>
+                
+                <h2>2. Microsoft Azure Cosmos DB Vulnerability (2021)</h2>
+                
+                <p>In August 2021, security researchers discovered a critical vulnerability in Microsoft Azure Cosmos DB that could allow attackers to gain full admin access to databases without authorization (Wiz Research Team, 2021).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Wiz Research Team. (2021). ChaosDB: How we hacked thousands of Azure customers' databases.</div>
+                    <div class="reference-authors">Wiz Research Team</div>
+                    <div class="reference-source">Wiz Blog. Retrieved from https://www.wiz.io/blog/chaosdb-how-we-hacked-thousands-of-azure-customers-databases</div>
+                </div>
+                
+                <h3>Key Findings:</h3>
+                <ul>
+                    <li><strong>Vulnerability:</strong> Jupyter Notebook feature misconfiguration</li>
+                    <li><strong>Impact:</strong> 3,000+ Azure Cosmos DB accounts potentially affected</li>
+                    <li><strong>Risk:</strong> Full database read/write/delete access</li>
+                    <li><strong>Response:</strong> Microsoft notified all affected customers within 48 hours</li>
+                </ul>
+                
+                <div class="alert warning">
+                    <strong>Cloud Security Lesson:</strong> Even managed services from major providers can have critical vulnerabilities. Defense in depth and continuous monitoring are essential.
+                </div>
+                
+                <h2>3. Google Cloud Platform (GCP) IAM Misconfigurations</h2>
+                
+                <p>Research by Orca Security in 2022 found that 81% of GCP organizations had critical security issues, with IAM misconfigurations being the most common (Orca Security, 2022).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Orca Security. (2022). The State of Public Cloud Security 2022.</div>
+                    <div class="reference-authors">Orca Security Research Team</div>
+                    <div class="reference-source">Orca Security Research. Retrieved from https://orca.security/resources/state-of-public-cloud-security-2022/</div>
+                </div>
+                
+                <h3>Common GCP IAM Issues:</h3>
+                <ul>
+                    <li><strong>Overly Permissive Roles:</strong> 58% of organizations had primitive roles (Owner, Editor, Viewer) assigned</li>
+                    <li><strong>Service Account Keys:</strong> 72% had exposed service account keys</li>
+                    <li><strong>Public Buckets:</strong> 34% had publicly accessible Cloud Storage buckets</li>
+                    <li><strong>Default Networks:</strong> 41% used default VPC networks with open firewall rules</li>
+                </ul>
+                
+                <div class="code-block">
+                    <pre># Dangerous GCP IAM binding (DO NOT USE)
+gcloud projects add-iam-policy-binding PROJECT_ID \
+  --member="user:employee@company.com" \
+  --role="roles/owner"
+
+# Secure GCP IAM binding with least privilege
+gcloud projects add-iam-policy-binding PROJECT_ID \
+  --member="user:developer@company.com" \
+  --role="roles/cloudfunctions.developer" \
+  --condition='expression=resource.name.startsWith("projects/_/buckets/prod-"),title=Prod Buckets Only'</pre>
+                </div>
+                
+                <h2>4. Real-World Defense Strategies Based on Research</h2>
+                
+                <h3>4.1 Cloud Security Posture Management (CSPM)</h3>
+                <p>Gartner research shows that organizations using CSPM tools reduce cloud misconfigurations by 80% (Gartner, 2023).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Gartner. (2023). Market Guide for Cloud Security Posture Management.</div>
+                    <div class="reference-authors">Gartner Research</div>
+                    <div class="reference-source">Gartner. Retrieved from https://www.gartner.com/en/documents/4017470</div>
+                </div>
+                
+                <h3>4.2 Infrastructure as Code (IaC) Security</h3>
+                <p>Research by Bridgecrew found that 45% of cloud breaches could be prevented with IaC security scanning (Bridgecrew, 2022).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Bridgecrew. (2022). The State of IaC Security 2022.</div>
+                    <div class="reference-authors">Bridgecrew Research Team</div>
+                    <div class="reference-source">Bridgecrew. Retrieved from https://bridgecrew.io/blog/state-of-iac-security-2022/</div>
+                </div>
+                
+                <div class="code-block">
+                    <pre># Terraform with security scanning
+terraform init
+terraform plan
+
+# Scan for security issues
+checkov -d .
+tfsec .
+terraform-compliance -f features/</pre>
+                </div>
+                
+                <h3>4.3 Zero Trust Architecture for Cloud</h3>
+                <p>The National Institute of Standards and Technology (NIST) provides guidelines for Zero Trust in cloud environments (NIST, 2020).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">National Institute of Standards and Technology. (2020). Zero Trust Architecture (NIST SP 800-207).</div>
+                    <div class="reference-authors">NIST Computer Security Division</div>
+                    <div class="reference-source">U.S. Department of Commerce. Retrieved from https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf</div>
+                </div>
+                
+                <h2>5. Training Implications Based on Real Incidents</h2>
+                
+                <div class="alert info">
+                    <strong>Required Cloud Security Skills:</strong>
+                </div>
+                
+                <h3>5.1 Technical Skills:</h3>
+                <ul>
+                    <li><strong>Cloud IAM Management:</strong> Least privilege principle implementation</li>
+                    <li><strong>Configuration Management:</strong> Secure cloud resource configuration</li>
+                    <li><strong>Incident Response:</strong> Cloud-specific breach response procedures</li>
+                    <li><strong>Compliance:</strong> Meeting cloud security standards (CIS, NIST, ISO)</li>
+                </ul>
+                
+                <h3>5.2 Certification Pathways:</h3>
+                <ul>
+                    <li><strong>AWS Certified Security - Specialty</strong></li>
+                    <li><strong>Microsoft Certified: Azure Security Engineer Associate</strong></li>
+                    <li><strong>Google Cloud Certified: Professional Cloud Security Engineer</strong></li>
+                    <li><strong>Certified Cloud Security Professional (CCSP)</strong></li>
+                </ul>
+                
+                <h3>5.3 Recommended Training Programs:</h3>
+                <ul>
+                    <li><strong>Cloud Security Fundamentals:</strong> 20-hour course covering AWS, Azure, GCP security</li>
+                    <li><strong>Cloud Incident Response:</strong> Hands-on labs with real breach scenarios</li>
+                    <li><strong>Cloud Compliance & Governance:</strong> Meeting regulatory requirements in cloud</li>
+                    <li><strong>Advanced Cloud Security Architecture:</strong> Designing secure cloud environments</li>
+                </ul>
+                
+                <div class="alert">
+                    <strong>Conclusion:</strong> Cloud security requires continuous learning and adaptation. The incidents analyzed demonstrate that both technical controls and organizational processes are essential for effective cloud security. Regular training, automated security tools, and adherence to security frameworks provide the foundation for secure cloud operations.
+                </div>
+                
+                <h2>References</h2>
+                
+                <div class="reference">
+                    <div class="reference-title">Cloud Security Alliance. (2023). Top Threats to Cloud Computing: The Egregious 11.</div>
+                    <div class="reference-authors">Cloud Security Alliance</div>
+                    <div class="reference-source">Cloud Security Alliance. Retrieved from https://cloudsecurityalliance.org/research/top-threats/</div>
+                </div>
+                
+                <div class="reference">
+                    <div class="reference-title">

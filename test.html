@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CSS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { padding: 20px; }
+        .test-box { 
+            background: var(--dark-light); 
+            padding: 20px; 
+            margin: 20px 0;
+            border-radius: var(--radius-lg);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Test</h1>
+    <div class="test-box">
+        <p>Testing CSS variables: var(--dark-light) should show a dark box.</p>
+    </div>
+</body>
+</html>

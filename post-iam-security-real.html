@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAM Security: Real Breaches & Best Practices - CyberPulse Insights</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .post-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) 0; }
+        .post-header { margin-bottom: var(--space-xl); border-bottom: 2px solid var(--dark-light); padding-bottom: var(--space-lg); }
+        .post-title { font-size: 2.5rem; margin-bottom: var(--space-md); color: var(--light); }
+        .post-meta { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .post-author { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: var(--space-sm); }
+        .post-body { line-height: 1.8; }
+        .post-body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-md); color: var(--primary); border-bottom: 1px solid var(--dark-light); padding-bottom: var(--space-sm); }
+        .post-body h3 { margin-top: var(--space-lg); margin-bottom: var(--space-sm); color: var(--light); }
+        .post-body p { margin-bottom: var(--space-md); color: var(--gray-light); }
+        .post-body ul, .post-body ol { margin-bottom: var(--space-md); padding-left: var(--space-lg); color: var(--gray-light); }
+        .post-body li { margin-bottom: var(--space-sm); }
+        .code-block { background: var(--dark-light); border: 1px solid var(--gray); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .code-block pre { margin: 0; color: var(--light); }
+        .alert { background: var(--dark-light); border-left: 4px solid var(--danger); padding: var(--space-md); margin: var(--space-md) 0; border-radius: var(--radius-sm); }
+        .alert.warning { border-left-color: var(--warning); }
+        .alert.info { border-left-color: var(--primary); }
+        .back-button { display: inline-flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xl); color: var(--primary); text-decoration: none; font-weight: 500; }
+        .back-button:hover { color: var(--primary-dark); }
+        .reference { background: rgba(255, 255, 255, 0.05); padding: var(--space-md); border-radius: var(--radius-md); margin: var(--space-md) 0; border-left: 3px solid var(--secondary); }
+        .reference-title { font-weight: 600; color: var(--light); margin-bottom: var(--space-xs); }
+        .reference-authors { color: var(--gray); font-size: 0.9rem; }
+        .reference-source { color: var(--primary); font-size: 0.9rem; }
+        .stat-box { background: rgba(14, 165, 233, 0.1); border-radius: var(--radius-md); padding: var(--space-md); margin: var(--space-md) 0; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-label { color: var(--gray-light); font-size: 0.9rem; }
+        @media (max-width: 768px) { .post-title { font-size: 2rem; } .post-meta { flex-direction: column; gap: var(--space-sm); } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberPulse <strong>Insights</strong></span>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+            <div class="nav-menu">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/#threats" class="nav-link"><i class="fas fa-fire"></i> Threats</a>
+                <a href="/#training" class="nav-link"><i class="fas fa-graduation-cap"></i> Training</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-content">
+            <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to All Posts</a>
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"><i class="far fa-calendar"></i> February 25, 2026</span>
+                    <span class="post-category cloud">Identity Security</span>
+                    <span class="read-time"><i class="far fa-clock"></i> 11 min read</span>
+                </div>
+                <h1 class="post-title">IAM Security Breaches: Real-World Analysis & Defense Strategies</h1>
+                <div class="post-author"><i class="fas fa-user"></i> Marcus Rodriguez, IAM Security Specialist</div>
+                <div class="post-tags">
+                    <span class="tag">IAM</span><span class="tag">Identity</span><span class="tag">Azure AD</span>
+                    <span class="tag">Okta</span><span class="tag">MFA</span><span class="tag">Privileged Access</span><span class="tag">Zero Trust</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <div class="alert">
+                    <strong>Executive Summary:</strong> Identity and Access Management (IAM) failures are responsible for 80% of security breaches. This analysis examines real IAM security incidents, including recent Okta and Microsoft breaches, with evidence-based defense strategies.
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">of security breaches involve compromised identities (Verizon, 2023)</div>
+                </div>
+                
+                <h2>1. Okta Support System Breach (2023)</h2>
+                
+                <p>In October 2023, Okta disclosed a breach of its support system that exposed files belonging to 134 customers, including 1Password, Cloudflare, and BeyondTrust (Okta, 2023).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Okta. (2023). October 2023 Okta Support System Security Incident.</div>
+                    <div class="reference-authors">Okta Security Team</div>
+                    <div class="reference-source">Okta Security Blog. Retrieved from https://www.okta.com/blog/2023/10/okta-support-security-incident/</div>
+                </div>
+                
+                <h3>Technical Analysis:</h3>
+                <ul>
+                    <li><strong>Attack Vector:</strong> Stolen credentials from a support engineer</li>
+                    <li><strong>Impact:</strong> 134 enterprise customers affected</li>
+                    <li><strong>Data Exposed:</strong> HAR files containing session tokens and cookies</li>
+                    <li><strong>Duration:</strong> September 28 - October 17, 2023</li>
+                </ul>
+                
+                <div class="code-block">
+                    <pre># Example of session token in HAR file (sensitive data)
+{
+  "entries": [
+    {
+      "request": {
+        "url": "https://company.okta.com/api/v1/users",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          }
+        ]
+      }
+    }
+  ]
+}</pre>
+                </div>
+                
+                <h2>2. Microsoft Azure AD OAuth App Consent Phishing (2022-2023)</h2>
+                
+                <p>Attackers have increasingly used OAuth app consent phishing to gain access to Microsoft 365 and Azure AD environments. Microsoft's Digital Defense Report 2023 highlighted this growing threat (Microsoft, 2023).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Microsoft. (2023). Microsoft Digital Defense Report 2023.</div>
+                    <div class="reference-authors">Microsoft Security Team</div>
+                    <div class="reference-source">Microsoft Security. Retrieved from https://www.microsoft.com/en-us/security/business/microsoft-digital-defense-report-2023</div>
+                </div>
+                
+                <h3>Attack Methodology:</h3>
+                <ol>
+                    <li>Create malicious OAuth app with legitimate-looking permissions</li>
+                    <li>Send phishing emails requesting app consent</li>
+                    <li>Once consented, app gains access to user data</li>
+                    <li>Attackers use access tokens for data exfiltration</li>
+                </ol>
+                
+                <div class="code-block">
+                    <pre># Malicious OAuth app permissions example
+{
+  "resourceAppId": "00000003-0000-0000-c000-000000000000",
+  "resourceAccess": [
+    {
+      "id": "e1fe6dd8-ba31-4d61-89e7-88639da4683d",
+      "type": "Scope"
+    },
+    {
+      "id": "64a6afd2-4b43-4c76-8c6c-4c7d8a8c8c8c",
+      "type": "Role"
+    }
+  ]
+}
+
+# Legitimate permissions should be minimal:
+{
+  "resourceAppId": "00000003-0000-0000-c000-000000000000",
+  "resourceAccess": [
+    {
+      "id": "e1fe6dd8-ba31-4d61-89e7-88639da4683d",  # User.Read only
+      "type": "Scope"
+    }
+  ]
+}</pre>
+                </div>
+                
+                <h2>3. Real-World IAM Security Statistics</h2>
+                
+                <div class="stat-box">
+                    <div class="stat-number">61%</div>
+                    <div class="stat-label">of breaches involved credential data (Verizon DBIR, 2023)</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">74%</div>
+                    <div class="stat-label">of organizations experienced an identity-related breach (IBM, 2023)</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">$4.45M</div>
+                    <div class="stat-label">average cost of a data breach (IBM Cost of Data Breach Report, 2023)</div>
+                </div>
+                
+                <div class="reference">
+                    <div class="reference-title">Verizon. (2023). 2023 Data Breach Investigations Report (DBIR).</div>
+                    <div class="reference-authors">Verizon Business</div>
+                    <div class="reference-source">Verizon. Retrieved from https://www.verizon.com/business/resources/reports/dbir/</div>
+                </div>
+                
+                <div class="reference">
+                    <div class="reference-title">IBM Security. (2023). Cost of a Data Breach Report 2023.</div>
+                    <div class="reference-authors">IBM Security</div>
+                    <div class="reference-source">IBM. Retrieved from https://www.ibm.com/reports/data-breach</div>
+                </div>
+                
+                <h2>4. Defense Strategies Based on Research</h2>
+                
+                <h3>4.1 Multi-Factor Authentication (MFA) Effectiveness</h3>
+                <p>Microsoft research shows that MFA blocks 99.9% of automated attacks (Microsoft, 2022).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Microsoft. (2022). Your Pa$$word doesn't matter.</div>
+                    <div class="reference-authors">Alex Weinert, Microsoft Identity Security</div>
+                    <div class="reference-source">Microsoft Security Blog. Retrieved from https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984</div>
+                </div>
+                
+                <h3>4.2 Privileged Access Management (PAM)</h3>
+                <p>Gartner research indicates that organizations implementing PAM reduce privileged account breaches by 80% (Gartner, 2023).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Gartner. (2023). Magic Quadrant for Privileged Access Management.</div>
+                    <div class="reference-authors">Gartner Research</div>
+                    <div class="reference-source">Gartner. Retrieved from https://www.gartner.com/en/documents/4013107</div>
+                </div>
+                
+                <div class="code-block">
+                    <pre># Just-In-Time (JIT) privileged access example
+# Request elevation for specific task
+az role assignment create \
+  --assignee "user@company.com" \
+  --role "Virtual Machine Contributor" \
+  --scope "/subscriptions/{sub-id}/resourceGroups/{rg-name}" \
+  --start-time $(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+  --end-time $(date -u -d "+2 hours" +"%Y-%m-%dT%H:%M:%SZ")</pre>
+                </div>
+                
+                <h3>4.3 Identity Threat Detection & Response (ITDR)</h3>
+                <p>The Cybersecurity and Infrastructure Security Agency (CISA) recommends ITDR as part of identity security best practices (CISA, 2023).</p>
+                
+                <div class="reference">
+                    <div class="reference-title">Cybersecurity and Infrastructure Security Agency. (2023). Identity and Access Management Best Practices.</div>
+                    <div class="reference-authors">CISA</div>
+                    <div class="reference-source">CISA. Retrieved from https://www.cisa.gov/identity-and-access-management</div>
+                </div>
+                
+                <h2>5. Training Implications & Certification Pathways</h2>
+                
+                <div class="alert info">
+                    <strong>Required IAM Security Skills:</strong>
+                </div>
+                
+                <h3>5.1 Technical Skills:</h3>
+                <ul>
+                    <li><strong>Identity Provider Management:</strong> Azure AD, Okta, Ping Identity configuration</li>
+                    <li><strong>Access Control Design:</strong> RBAC, ABAC, PBAC implementation</li>
+                    <li><strong>Authentication Protocols:</strong> SAML, OAuth 2.0, OIDC, SCIM</li>
+                    <li><strong>Privileged Access Security:</strong> PAM tools and Just-In-Time access</li>
+                </ul>
+                
+                <h3>5.2 Certification Pathways:</h3>
+                <ul>
+                    <li><strong>Certified Identity and Access Manager (CIAM)</strong></li>
+                    <li><strong>Microsoft Certified: Identity and Access Administrator Associate</strong></li>
+                    <li><strong>Okta Certified Professional/Administrator</strong></li>
+                    <li><strong>Certified Information Systems Security Professional (CISSP) - IAM Domain</strong></li>
+                </ul>
+                
+                <h3>5.3 Recommended Training Programs:</h3>
+                <ul>
+                    <li><strong>IAM Security Fundamentals:</strong> 16-hour course covering real breach analysis</li>
+                    <li><strong>Advanced IAM Architecture:</strong> Designing secure identity systems</li>
+                    <li><strong>Identity Threat Detection:</strong> Monitoring and responding to identity attacks</li>
+                    <li><strong>Cloud IAM Security:</strong> AWS IAM, Azure AD, GCP IAM best practices</li>
+                </ul>
+                
+                <div class="alert">
+                    <strong>Conclusion:</strong> IAM security is not just about technology implementation but requires continuous monitoring, regular audits, and ongoing user education. The real incidents analyzed demonstrate that identity is the new perimeter, and securing it requires a defense-in-depth approach combining technical controls, process improvements, and user awareness.
+                </div>
+                
+                <h2>References</h2>
+                
+                <div class="reference">
+                    <div class="reference-title">National Institute of Standards and Technology. (2020). Digital Identity Guidelines (NIST SP 800-63-3).</div>
+                    <div class="reference-authors">NIST Computer Security Division</div>
+                    <div class="reference-source">U.S. Department of Commerce. Retrieved from https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf</div>
+                </div>
+                
+                <div class="
